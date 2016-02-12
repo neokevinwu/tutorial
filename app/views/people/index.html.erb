@@ -2,7 +2,7 @@
 
 <%= link_to 'New Person', new_person_path %>
 
-<table>
+<table style="position: absolute">
   <thead>
     <tr>
       <th>Name</th>
@@ -15,7 +15,7 @@
   
   <tbody>
     <% @people.each do |person| %>  
-      <tr>
+      <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
         <td><%= person.name %></td>
         <td><%= person.weight %></td>
         <td><%= person.height %></td>
@@ -26,7 +26,7 @@
                 method: :delete,
                 data: { confirm: 'Are you sure?' } %></td>
       </tr>
-      <div id="graph" style="background-color: <%= person.color %>; width: <%= person.weight %>; height: <%= person.height %>;">
+      <div id="graph" style="background-color: <%= person.color %>; width: <%= person.weight %>px; height: <%= person.height %>px;">
         <p><%= person.name %></p>
       </div>
     <% end %>
